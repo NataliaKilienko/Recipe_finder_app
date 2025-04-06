@@ -1,36 +1,138 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Recipe Finder App
 
-## Getting Started
+A modern recipe search application built with **Next.js**, **TypeScript**, and **Tailwind CSS**.  
+It allows users to search for recipes using keyword, cuisine type, or max preparation time and explore detailed information for each recipe.
 
-First, run the development server:
+---
+
+## Features
+
+- Search recipes by keyword (e.g., "pasta")
+- Filter by cuisine (e.g., Italian, Mexican, Chinese, etc.)
+- Limit results by maximum preparation time (in minutes)
+- Server-side rendered results using Next.js
+- View detailed recipe pages with:
+  - Image
+  - Summary
+  - Ingredients
+  - Preparation time & servings
+- Navigation between pages using dynamic routes (`/recipes/[id]`)
+- Fully styled with **Tailwind CSS**
+- ESLint & Prettier setup for clean and consistent code
+- API caching for 1 minute using `next.revalidate`
+
+---
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── layout.tsx                  # Root layout
+│   ├── globals.css                 # Global styles
+│   ├── page.tsx                    # Homepage with <SearchForm />
+│   └── recipes/
+│       ├── page.tsx                # Recipes search results page
+│       ├── loading.tsx             # Loading UI for results
+│       └── [id]/
+│           ├── page.tsx            # Recipe details page
+│           └── loading.tsx         # Loading UI for details page
+
+├── components/
+│   ├── SearchForm.tsx              # Search form UI
+│   ├── RecipeCard.tsx              # Recipe card for results grid
+│   ├── RecipeInfo.tsx              # Recipe details UI
+│   ├── IngredientsList.tsx         # Ingredients list UI
+│   └── LoadingSpinner.tsx          # Reusable loading spinner
+
+├── lib/
+│   ├── api.ts                      # API utilities for data fetching
+│   └── constants.ts                # App constants (e.g., cuisine options)
+
+├── types/
+│   └── recipe.ts                   # TypeScript interfaces and types for recipes
+
+public/
+└── favicon.ico                     # Favicon
+
+.env.local                          # Environment variables (e.g., Spoonacular API key)
+.eslint.config.mjs                 # ESLint configuration (flat config)
+.prettierrc                        # Prettier formatting rules
+.gitignore                         # Git ignored files
+next.config.ts                     # Next.js configuration
+tsconfig.json                      # TypeScript compiler configuration
+README.md                          # Project overview and instructions
+
+```
+
+---
+
+## Technologies Used
+
+- **Next.js 15 (App Router + SSR)**
+- **TypeScript**
+- **Tailwind CSS**
+- **Spoonacular API**
+- **React 19**
+- **ESLint & Prettier**
+
+---
+
+## Installation
+
+```bash
+git clone https://github.com/your-username/recipe-finder-app.git
+cd recipe-finder-app
+npm install
+```
+
+> Don't forget to add your API key 👇
+
+### Environment Variables
+
+Create a `.env.local` file in the root of the project:
+
+```
+SPOONACULAR_API_KEY=your_api_key_here
+```
+
+---
+
+## Running the App
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit: [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Build for Production
 
-## Learn More
+```bash
+npm run build
+npm run start
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Linting & Formatting
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run lint    # Run ESLint
+npm run format  # Run Prettier
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## API Reference
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Powered by [Spoonacular API](https://spoonacular.com/food-api)
+
+---
+
+## Author
+
+**Nataliia Kiliienko** – Front-End Developer 
+GitHub: [@NataliaKilienko](https://github.com/NataliaKilienko)
