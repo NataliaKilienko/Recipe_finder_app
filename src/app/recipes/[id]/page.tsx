@@ -3,15 +3,13 @@ import { RecipeDetails } from '@/types/recipe';
 import IngredientsList from '@/components/IngredientsList';
 import RecipeInfo from '@/components/RecipeInfo';
 
-interface RecipePageProps {
-  params: {
-    id: string;
-  };
-}
-
 export const dynamic = 'force-dynamic';
 
-export default async function RecipeDetailsPage({ params }: RecipePageProps) {
+export default async function RecipeDetailsPage({
+  params,
+}: {
+  params: { id: string };
+}) {
   const { id } = params;
   const recipe: RecipeDetails | null = await getRecipeById(id);
 
@@ -33,7 +31,6 @@ export default async function RecipeDetailsPage({ params }: RecipePageProps) {
           servings={recipe.servings}
           summary={recipe.summary}
         />
-
         <IngredientsList ingredients={recipe.extendedIngredients} />
 
         {recipe.sourceUrl && (
