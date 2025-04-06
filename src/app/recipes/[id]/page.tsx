@@ -5,15 +5,12 @@ import RecipeInfo from '@/components/RecipeInfo';
 
 export const dynamic = 'force-dynamic';
 
-type RecipePageProps = {
-  params: {
-    id: string;
-  };
+type PageProps = {
+  params: { id: string };
 };
 
-export default async function RecipeDetailsPage({ params }: RecipePageProps) {
-  const { id } = params;
-  const recipe: RecipeDetails | null = await getRecipeById(id);
+export default async function RecipeDetailsPage({ params }: PageProps) {
+  const recipe: RecipeDetails | null = await getRecipeById(params.id);
 
   if (!recipe) {
     return (
