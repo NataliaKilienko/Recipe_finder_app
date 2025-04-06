@@ -3,14 +3,17 @@ import { RecipeDetails } from '@/types/recipe';
 import IngredientsList from '@/components/IngredientsList';
 import RecipeInfo from '@/components/RecipeInfo';
 
+interface RecipePageProps {
+  params: {
+    id: string;
+  };
+}
+
 export const dynamic = 'force-dynamic';
 
-type PageProps = {
-  params: { id: string };
-};
-
-export default async function RecipeDetailsPage({ params }: PageProps) {
-  const recipe: RecipeDetails | null = await getRecipeById(params.id);
+export default async function RecipeDetailsPage({ params }: RecipePageProps) {
+  const { id } = params;
+  const recipe: RecipeDetails | null = await getRecipeById(id);
 
   if (!recipe) {
     return (
